@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUTH WANJIKU | Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    emailjs.init("MuOJ-wTsVe3K5t5BZ");
+
+    document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        emailjs.send("service_y3byunv", "template_kun25uk", {
+            name: document.querySelector("input[type='text']").value,
+            email: document.querySelector("input[type='email']").value,
+            message: document.querySelector("textarea").value
+        })
+        .then(function() {
+            alert("Message sent successfully!");
+        }, function(error) {
+            console.log(error); // 👈 IMPORTANT
+            alert("Failed to send message.");
+        });
+    });
+
+});
+</script>
+
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <h1>Ruth Wanjiku</h1>
+        <div>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h2>I build modern websites</h2>
+        <p>Web developer focused on clean design and performance</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about">
+            <p>
+                I'm a developer passionate about building clean, responsive, and user-friendly websites.
+                I help businesses and startups bring their ideas to life.
+            </p>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+   <div class="projects">
+    <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1542641728-6ca359b085f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bW9iaWxlJTIwYXBwJTIwZGVzaWdufGVufDB8fDB8fHww" alt="Project Image">
+        <div class="overlay">
+            <h3>Smart Exchange App</h3>
+            <p>Social media app for exchanging goods and services</p>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <img src="https://plus.unsplash.com/premium_vector-1682310595106-ecf4ee316a54?w=352&dpr=1&h=367&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Project Image">
+
+        <div class="overlay">
+            <h3>Module DevSphere</h3>
+            <p>Software company website</p>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1643378813320-9eebae4833cb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEzfHxzYWxlcyUyMHN5c3RlbXxlbnwwfHwwfHx8MA%3D%3D" alt="Project Image">
+
+        <div class="overlay">
+            <h3>Inventra System</h3>
+            <p>Sales & stock management system</p>
+        </div>
+    </div>
+</div>
+
+    <!-- TESTIMONIAL -->
+    <section>
+        <h2>Testimonial</h2>
+        <div class="testimonial">
+            <p>"Great developer, delivered beyond expectations."</p>
+            <h4>- Client</h4>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact">
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Ruth Wanjiku. All rights reserved.</p>
+    </footer>
+<!-- DARK MODE TOGGLE -->
+<button id="darkToggle" class="dark-toggle">🌙</button>
+
+<!-- CTA SECTION -->
+<section class="cta">
+    <h2>Have a project in mind?</h2>
+    <p>Let’s work together and bring your idea to life.</p>
+    <a href="#contact" class="btn">Hire Me</a>
+</section>
+
+<!-- SCRIPT -->
+<script>
+    // DARK MODE
+    const toggle = document.getElementById("darkToggle");
+
+    toggle.onclick = () => {
+        document.body.classList.toggle("dark");
+        toggle.textContent = 
+            document.body.classList.contains("dark") ? "☀️" : "🌙";
+    };
+
+    // SCROLL ANIMATIONS
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    });
+
+    document.querySelectorAll("section").forEach(sec => {
+        sec.classList.add("hidden");
+        observer.observe(sec);
+    });
+</script>
+
+</body>
+</html>
